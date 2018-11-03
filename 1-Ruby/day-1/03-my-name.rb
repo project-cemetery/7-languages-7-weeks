@@ -1,1 +1,1 @@
-(1..10).each { |i| puts 'Igor' }
+10.times { puts 'Igor' }
