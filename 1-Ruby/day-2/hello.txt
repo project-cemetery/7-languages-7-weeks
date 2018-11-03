@@ -1,0 +1,6 @@
+hello
+world
+and ruby
+
+it's simple file
+with some data
