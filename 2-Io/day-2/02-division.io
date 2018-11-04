@@ -1,7 +1,7 @@
 origDiv := Number getSlot("/")
 
 Number / := method (i, 
-    if (i != 0, origDiv(i), 0)
+  if (i != 0, origDiv(i), 0)
 )
 
 (12 / 5) println
