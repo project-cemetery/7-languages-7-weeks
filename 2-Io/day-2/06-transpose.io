@@ -18,8 +18,10 @@ original set(2, 2, "Nihao")
 transposed := original transpose
 
 for(x, 1, 3,
-    for(y, 1, 2,
-      ok := transposed get(y, x) == original get(x, y);
-      if (ok, "Ok" println, "Nooooo" println)
+  for(y, 1, 2,if (
+      transposed get(y, x) == original get(x, y),
+      "Ok" println,
+      "Nooooo" println
     )
   )
+)
