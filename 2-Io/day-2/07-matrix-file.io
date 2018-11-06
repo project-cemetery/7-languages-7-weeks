@@ -1,18 +1,15 @@
-toFile := method(filename, content,
-  f := File with("2-Io/day-2/#{filename}" interpolate)
-  f remove
-  f openForUpdating
-  f write(content)
-  f close
+// Transform filename to path
+Sequence here := method("2-Io/day-2/#{self}" interpolate)
+
+Sequence toFile := method(filename,
+  File with(filename here) remove openForUpdating write(self) close
 )
 
-fromFile := method(filename,
-  f := File with("2-Io/day-2/#{filename}" interpolate)
-  f openForReading
-  contents := f contents
-  f close
-  contents
+Sequence fromFile := method(filename,
+  File with(filename here) openForReading contents
 )
+
+Sequence toMatrix := method(Matrix deserialize(self))
 
 Matrix serialized := method(self rows serialized)
 Matrix deserialize := method(string, 
@@ -29,10 +26,10 @@ matrix set(2, 2, "Nihao")
 filename := "data.txt"
 
 // Serialize matrix
-toFile(filename, matrix serialized)
+matrix serialized toFile(filename)
 
 // Deserialize matrix
-newMatrix := Matrix deserialize(fromFile(filename))
+newMatrix := Sequence fromFile(filename) toMatrix
 
 // Check serialization-deserealization correction
 for(x, 1, 3,
