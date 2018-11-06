@@ -2,35 +2,13 @@ Builder := Object clone
 
 Builder indent := 0
 
-Builder increaseIndent := method(
-  Builder indent = Builder indent + 1
-)
-Builder decreaseIndent := method(
-  Builder indent = Builder indent -1 
-)
+Builder increaseIndent := method(indent = indent + 1)
+Builder decreaseIndent := method(indent = indent -1)
 
-Builder printIndent := method(
-  Builder indent repeat("  " print)
-)
-
-Builder printStart := method(name,
-  Builder increaseIndent
-  Builder printIndent
-  writeln("<", name, ">")
-)
-
-Builder printEnd := method(name,
-  Builder printIndent
-  Builder decreaseIndent
-  writeln("</", name, ">")
-)
-
-Builder printContent := method(content,
-  Builder increaseIndent
-  Builder printIndent
-  writeln(content)
-  Builder decreaseIndent
-)
+Builder printIndent := method(indent repeat("  " print))
+Builder printStart := method(name, increaseIndent; printIndent; writeln("<", name, ">"))
+Builder printEnd := method(name, printIndent; decreaseIndent; writeln("</", name, ">"))
+Builder printContent := method(content, increaseIndent; printIndent; writeln(content); decreaseIndent)
 
 Builder forward := method(
   Builder printStart(call message name)
