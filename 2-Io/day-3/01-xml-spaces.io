@@ -11,15 +11,15 @@ Builder printEnd := method(name, printIndent; decreaseIndent; writeln("</", name
 Builder printContent := method(content, increaseIndent; printIndent; writeln(content); decreaseIndent)
 
 Builder forward := method(
-  Builder printStart(call message name)
+  printStart(call message name)
 
   call message arguments foreach(
     arg,
     content := self doMessage(arg);
-    if (content type == "Sequence", Builder printContent(content))
+    if (content type == "Sequence", printContent(content))
   )
 
-  Builder printEnd(call message name)
+  printEnd(call message name)
 )
 
 Builder main(
