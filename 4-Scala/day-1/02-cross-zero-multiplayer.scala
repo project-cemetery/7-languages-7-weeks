@@ -62,9 +62,9 @@ while(!game.checkWin() && !game.checkAllFilled()) {
   println(nowPlayer + " turn")
 
   print("x: ")
-  val x = readInt()
+  val x = scala.io.StdIn.readInt()
   print("y: ")
-  val y = readInt()
+  val y = scala.io.StdIn.readInt()
 
   val add = if (nowPlayer == "O") game.addZero else game.addCross
 
